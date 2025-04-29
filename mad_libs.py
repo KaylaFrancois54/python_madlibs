@@ -5,20 +5,37 @@ print("Welcome to Python Mad Libs!")
 print("Answer the following questions to create your very own silly story.\n")
 
    # Gather user inputs
-adjective = input("Enter an adjective: ")
-noun = input("Enter a noun: ")
-verb = input("Enter a verb: ")
-adverb = input("Enter an adverb: ")
+   # Adding loop to allow multiple rounds
+while True:
+    adjective = input("Enter an adjective: ")
+    noun = input("Enter a noun: ")
+    verb = input("Enter a verb: ")
+    adverb = input("Enter an adverb: ")
 
-   # Build the story using an f-string
-story = (
-       f"Today, I saw a {adjective} {noun} that decided to {verb} {adverb}.\n"
-       "I couldn't believe my eyes!"
-   )
+    story = (
+        f"Today, I saw a {adjective} {noun} that decided to {verb} {adverb}.\n"
+        "I couldn't believe my eyes!"
+    )
+
+    print("\n" + story)
+
+    # Ask if the user wants to save the story
+    save = input("Do you want to save your story to a file? (yes/no): ").strip().lower()
+    if save == "yes":
+        filename = input("Enter a filename (without extension): ").strip()
+        with open(f"{filename}.txt", "w") as file:
+            file.write(story)
+        print(f"Story saved to {filename}.txt!")
+
+    # Ask if they want to play again
+    play_again = input("Do you want to play again? (yes/no): ").strip().lower()
+    if play_again != "yes":
+        print("Thanks for playing!")
+        break  # ✅ This is now inside the while loop
 
    # Display the completed story
-print("\nHere is your story:")
-print(story)
+    print("\nHere is your story:")
+    print(story)
 
 # Answer the following questions:
 
